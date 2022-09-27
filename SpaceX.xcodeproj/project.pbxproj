@@ -13,6 +13,11 @@
 		D591F19628DC9D2500A6D337 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D591F19428DC9D2500A6D337 /* Main.storyboard */; };
 		D591F19828DC9D2800A6D337 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D591F19728DC9D2800A6D337 /* Assets.xcassets */; };
 		D591F19B28DC9D2800A6D337 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D591F19928DC9D2800A6D337 /* LaunchScreen.storyboard */; };
+		D591F1A628DCADF000A6D337 /* PastFlightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D591F1A528DCADF000A6D337 /* PastFlightViewController.swift */; };
+		D591F1A828DCAE0800A6D337 /* UpComingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D591F1A728DCAE0800A6D337 /* UpComingViewController.swift */; };
+		D591F1AA28DCAE1600A6D337 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D591F1A928DCAE1600A6D337 /* HomeViewController.swift */; };
+		D599BCCE28E1F2B100EFED83 /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D599BCCD28E1F2B100EFED83 /* HomeService.swift */; };
+		D599BCD028E1F3D600EFED83 /* FlightStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = D599BCCF28E1F3D600EFED83 /* FlightStruct.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +29,11 @@
 		D591F19728DC9D2800A6D337 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D591F19A28DC9D2800A6D337 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D591F19C28DC9D2800A6D337 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D591F1A528DCADF000A6D337 /* PastFlightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastFlightViewController.swift; sourceTree = "<group>"; };
+		D591F1A728DCAE0800A6D337 /* UpComingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpComingViewController.swift; sourceTree = "<group>"; };
+		D591F1A928DCAE1600A6D337 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		D599BCCD28E1F2B100EFED83 /* HomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
+		D599BCCF28E1F3D600EFED83 /* FlightStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightStruct.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +83,9 @@
 		D591F1A228DC9EBE00A6D337 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				D591F1A928DCAE1600A6D337 /* HomeViewController.swift */,
+				D599BCCD28E1F2B100EFED83 /* HomeService.swift */,
+				D599BCCF28E1F3D600EFED83 /* FlightStruct.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -80,6 +93,7 @@
 		D591F1A328DC9FB600A6D337 /* UpcomingFlight */ = {
 			isa = PBXGroup;
 			children = (
+				D591F1A728DCAE0800A6D337 /* UpComingViewController.swift */,
 			);
 			path = UpcomingFlight;
 			sourceTree = "<group>";
@@ -87,6 +101,7 @@
 		D591F1A428DC9FDF00A6D337 /* PastFlight */ = {
 			isa = PBXGroup;
 			children = (
+				D591F1A528DCADF000A6D337 /* PastFlightViewController.swift */,
 			);
 			path = PastFlight;
 			sourceTree = "<group>";
@@ -101,6 +116,7 @@
 				D591F18728DC9D2500A6D337 /* Sources */,
 				D591F18828DC9D2500A6D337 /* Frameworks */,
 				D591F18928DC9D2500A6D337 /* Resources */,
+				D59E108C28E2ED6B000D40F5 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -157,14 +173,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		D59E108C28E2ED6B000D40F5 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"error: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D591F18728DC9D2500A6D337 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D599BCD028E1F3D600EFED83 /* FlightStruct.swift in Sources */,
+				D599BCCE28E1F2B100EFED83 /* HomeService.swift in Sources */,
 				D591F19328DC9D2500A6D337 /* ViewController.swift in Sources */,
 				D591F18F28DC9D2500A6D337 /* AppDelegate.swift in Sources */,
+				D591F1AA28DCAE1600A6D337 /* HomeViewController.swift in Sources */,
 				D591F19128DC9D2500A6D337 /* SceneDelegate.swift in Sources */,
+				D591F1A628DCADF000A6D337 /* PastFlightViewController.swift in Sources */,
+				D591F1A828DCAE0800A6D337 /* UpComingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
