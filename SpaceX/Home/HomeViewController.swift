@@ -8,19 +8,30 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-    let service = HomeService()
+    var homeService: HomeService!
+    var upComingFLights: [FlightStruct] = []
+    var pastFlights: [FlightStruct] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        self.homeService = HomeService(delegate: self)
     }
-//    @IBOutlet weak var button: UIButton!
     
   
-    @IBAction func tapButton(_ sender: Any) {
+  @IBAction private func tapButton(_ sender: Any) {
         Task {
-           _ = await self.service.fetchFlights()
+           _ = await self.homeService.fetchFlights()
         }
     }
-    
+}
 
+extension HomeViewController: HomeServiceDelegate {
+    func didFinish(result: Flightcase) {
+        print(result)
+        self.upComingFLights = result.upcoming
+        self.pastFlights = result.past
+    }
+    func didFail(error: Error) {
+        print("☠️ Error: \(error.localizedDescription)")
+    }
 }
