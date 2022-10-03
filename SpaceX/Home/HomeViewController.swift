@@ -27,7 +27,6 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: HomeServiceDelegate {
     func didFinish(result: Flightcase) {
-        print(result)
         self.upComingFLights = result.upcoming
         self.pastFlights = result.past
     }
