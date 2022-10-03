@@ -77,3 +77,5 @@ class HomeService {
         } catch {
             self.delegate.didFail(error: error)
         }
+    }
+}
