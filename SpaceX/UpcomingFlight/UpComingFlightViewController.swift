@@ -11,11 +11,11 @@ class UpComingFlightViewController: UIViewController {
 
     @IBOutlet weak var testlabel: UILabel!
     
+    var flight: FlightStruct!
+    
     var testtitle: String? 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.testlabel.text = self.testtitle
-        // Do any additional setup after loading the view.
+        self.testlabel.text = self.flight.id
     }
 }

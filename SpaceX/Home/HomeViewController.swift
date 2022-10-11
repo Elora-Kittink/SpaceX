@@ -170,63 +170,27 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         }
     }
     
+    
+//     MARK: - Did Select Item At - ce qui se passe au clique sur une cell
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.section == 0 {
-            if let upcomingVC: UpComingFlightViewController = UpComingFlightViewController.instantiateVC(identifier: "UpComingFlightViewController") {
-                upcomingVC.
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            guard let controller = storyboard.instantiateViewController(withIdentifier: "UpComingFlightViewController") as? UpComingFlightViewController
+            else {
+                return
             }
-                
-                
+            controller.flight = upComingFlights[indexPath.row]
+            self.navigationController?.pushViewController(controller, animated: true)
         } else {
-            
 //            self.selectedIndex = indexPath.row
-            
-            
-//            if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "UpComingFlightViewController") as? UpComingFlightViewController {
-//                vc.testtitle = "\(upComingFlights[indexPath.row].flightNumber)"
-//                self.navigationController?.pushViewController(vc, animated: true)
-//            }
-            
-
-            if let bob: UpComingFlightViewController = UIViewController.iinstantiateVC(identifier: "UpComingFlightViewController") {
-                bob
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            guard let controller = storyboard.instantiateViewController(withIdentifier: "PastFlightViewController") as? PastFlightViewController
+            else {
+                return
             }
-            
-            let vc = createVC(UpComingFlightViewController.self, withIdentifier: "UpComingFlightViewController")
-            vc.testtitle
-//            let bob = UpComingFlightViewController()
-//            bob.testtitle = "AYDFGE"
-//            bob.instantiateVC(identifier: "UpComingFlightViewController")
-//            self.navigationController?.pushViewController(bob, animated: true)
-          
-//            performSegue(withIdentifier: "upcomingSegue", sender: nil)
+            controller.flight = pastFlights[indexPath.row]
+            self.navigationController?.pushViewController(controller, animated: true)
         }
     }
-}
-
-extension UIViewController {
-    
-    static func instanciateVC<VC>( name: String) -> VC {
-        let storyboard = UIStoryboard(name: name, bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: String(describing: self)) as! VC
-        return controller
-    }
-    
-    static func iinstantiateVC<VC: UIViewController>(identifier: String) -> VC? {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let controller = storyboard.instantiateViewController(withIdentifier: identifier) as? VC else {
-            return nil
-        }
-        return controller
-    }
-}
-
-    func createVC<VC: UIViewController>(_ ofType: VC.Type, withIdentifier identifier: String) -> VC {
-    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-    guard let controller = storyboard.instantiateViewController(withIdentifier: identifier) as? VC
-    else {
-        fatalError("VC non possible")
-    }
-    
-    return controller
 }

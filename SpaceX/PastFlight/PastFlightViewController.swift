@@ -9,8 +9,12 @@ import UIKit
 
 class PastFlightViewController: UIViewController {
 
+    @IBOutlet weak var testlabel: UILabel!
+    
+    var flight: FlightStruct!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+//        self.testlabel.text = self.testtitle
     }
 }
