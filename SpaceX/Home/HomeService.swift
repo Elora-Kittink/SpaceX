@@ -67,6 +67,8 @@ class HomeService {
             }
             var upcoming: [FlightStruct] = []
             var past: [FlightStruct] = []
+            
+
 
             flights.forEach { flight in
                 flight.upcoming ? upcoming.append(flight) : past.append(flight)
