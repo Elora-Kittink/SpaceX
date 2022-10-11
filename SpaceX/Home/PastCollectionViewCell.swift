@@ -12,6 +12,8 @@ class PastCollectionViewCell: UICollectionViewCell {
     
     static let identifier = "PastCollectionViewCell"
     
+    var data: FlightStruct!
+    
     let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
@@ -30,7 +32,7 @@ class PastCollectionViewCell: UICollectionViewCell {
             UIImage(named: "cat4"),
             UIImage(named: "cat5"),
             UIImage(named: "cat6"),
-            UIImage(named: "cat7"),
+            UIImage(named: "cat7")
         ].compactMap({ $0 })
         imageView.image = images.randomElement()
         contentView.clipsToBounds = true

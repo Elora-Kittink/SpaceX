@@ -15,7 +15,7 @@ class HomeViewController: UIViewController {
     }
     
     var homeService: HomeService!
-    var upComingFLights: [FlightStruct] = []
+    var upComingFlights: [FlightStruct] = []
     var pastFlights: [FlightStruct] = []
     var collectionView: UICollectionView!
     
@@ -36,6 +36,11 @@ class HomeViewController: UIViewController {
         collectionView.frame = view.bounds
         collectionView.backgroundColor = .brown
         collectionView.dataSource = self
+        collectionView.delegate = self
+        Task {
+           _ = await self.homeService.fetchFlights()
+        }
+        
     }
 
     
@@ -106,24 +111,33 @@ class HomeViewController: UIViewController {
         return dogSection
     }
     
-  @IBAction private func tapButton(_ sender: Any) {
-        Task {
-           _ = await self.homeService.fetchFlights()
+    var selectedIndex: Int = 0
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "upcomingSegue" {
+            if let upcomingVC = segue.destination as? UpComingFlightViewController {
+                upcomingVC.testtitle = "\(upComingFlights[selectedIndex].flightNumber)"
+            } else {
+                print("segue destination error")
+//                faire gestion de l'erreur
+            }
         }
     }
+    
 }
 
 extension HomeViewController: HomeServiceDelegate {
     func didFinish(result: Flightcase) {
-        self.upComingFLights = result.upcoming
+        self.upComingFlights = result.upcoming
         self.pastFlights = result.past
+        print("upcoming flights \(upComingFlights)")
     }
     func didFail(error: Error) {
         print("☠️ Error: \(error.localizedDescription)")
     }
 }
 
-extension HomeViewController: UICollectionViewDataSource {
+extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         SectionType.allCases.count
@@ -131,22 +145,88 @@ extension HomeViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 { return 10 } else { return 10 }
+//        if section == 0 { return upComingFlights.count } else { return pastFlights.count }
     }
     
+//    MARK: - View Supplementary Element of Kind
+    
 //    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-//        
+//        quelque chose comme ça pour les headers?
 //    }
     
+//    MARK: - Cell For Item At
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        dequeueConfiguredReusableCell
-        
         print("index \(indexPath.section)")
         if indexPath.section == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PastCollectionViewCell.identifier, for: indexPath)
+//            je passe les data ici? genre cell.data = pastFlights[indexPath.row]
+            
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UpcomingCollectionViewCell.identifier, for: indexPath)
+            //            je passe les data ici? genre cell.data = upcomingFlights[indexPath.row]
             return cell
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            if let upcomingVC: UpComingFlightViewController = UpComingFlightViewController.instantiateVC(identifier: "UpComingFlightViewController") {
+                upcomingVC.
+            }
+                
+                
+        } else {
+            
+//            self.selectedIndex = indexPath.row
+            
+            
+//            if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "UpComingFlightViewController") as? UpComingFlightViewController {
+//                vc.testtitle = "\(upComingFlights[indexPath.row].flightNumber)"
+//                self.navigationController?.pushViewController(vc, animated: true)
+//            }
+            
+
+            if let bob: UpComingFlightViewController = UIViewController.iinstantiateVC(identifier: "UpComingFlightViewController") {
+                bob
+            }
+            
+            let vc = createVC(UpComingFlightViewController.self, withIdentifier: "UpComingFlightViewController")
+            vc.testtitle
+//            let bob = UpComingFlightViewController()
+//            bob.testtitle = "AYDFGE"
+//            bob.instantiateVC(identifier: "UpComingFlightViewController")
+//            self.navigationController?.pushViewController(bob, animated: true)
+          
+//            performSegue(withIdentifier: "upcomingSegue", sender: nil)
+        }
+    }
+}
+
+extension UIViewController {
+    
+    static func instanciateVC<VC>( name: String) -> VC {
+        let storyboard = UIStoryboard(name: name, bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: String(describing: self)) as! VC
+        return controller
+    }
+    
+    static func iinstantiateVC<VC: UIViewController>(identifier: String) -> VC? {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let controller = storyboard.instantiateViewController(withIdentifier: identifier) as? VC else {
+            return nil
+        }
+        return controller
+    }
+}
+
+    func createVC<VC: UIViewController>(_ ofType: VC.Type, withIdentifier identifier: String) -> VC {
+    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    guard let controller = storyboard.instantiateViewController(withIdentifier: identifier) as? VC
+    else {
+        fatalError("VC non possible")
+    }
+    
+    return controller
 }

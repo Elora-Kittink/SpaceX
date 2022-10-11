@@ -12,6 +12,16 @@ class UpcomingCollectionViewCell: UICollectionViewCell {
     
     static let identifier = "UpcomingCollectionViewCell"
     
+//    var data: FlightStruct! {
+//        didSet {
+//            guard let urlImage = URL(string: data.links.patch.small)
+//            else {
+//                return
+//            }
+//            
+//        }
+//    }
+    
     let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
