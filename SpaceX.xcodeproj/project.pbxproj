@@ -14,7 +14,7 @@
 		D591F19828DC9D2800A6D337 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D591F19728DC9D2800A6D337 /* Assets.xcassets */; };
 		D591F19B28DC9D2800A6D337 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D591F19928DC9D2800A6D337 /* LaunchScreen.storyboard */; };
 		D591F1A628DCADF000A6D337 /* PastFlightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D591F1A528DCADF000A6D337 /* PastFlightViewController.swift */; };
-		D591F1A828DCAE0800A6D337 /* UpComingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D591F1A728DCAE0800A6D337 /* UpComingViewController.swift */; };
+		D591F1A828DCAE0800A6D337 /* UpComingFlightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D591F1A728DCAE0800A6D337 /* UpComingFlightViewController.swift */; };
 		D591F1AA28DCAE1600A6D337 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D591F1A928DCAE1600A6D337 /* HomeViewController.swift */; };
 		D598A81928EB0F27008B2DB3 /* UpcomingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D598A81828EB0F27008B2DB3 /* UpcomingCollectionViewCell.swift */; };
 		D598A81B28EB1525008B2DB3 /* PastCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D598A81A28EB1525008B2DB3 /* PastCollectionViewCell.swift */; };
@@ -32,7 +32,7 @@
 		D591F19A28DC9D2800A6D337 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D591F19C28DC9D2800A6D337 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D591F1A528DCADF000A6D337 /* PastFlightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastFlightViewController.swift; sourceTree = "<group>"; };
-		D591F1A728DCAE0800A6D337 /* UpComingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpComingViewController.swift; sourceTree = "<group>"; };
+		D591F1A728DCAE0800A6D337 /* UpComingFlightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpComingFlightViewController.swift; sourceTree = "<group>"; };
 		D591F1A928DCAE1600A6D337 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		D598A81828EB0F27008B2DB3 /* UpcomingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingCollectionViewCell.swift; sourceTree = "<group>"; };
 		D598A81A28EB1525008B2DB3 /* PastCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -99,7 +99,7 @@
 		D591F1A328DC9FB600A6D337 /* UpcomingFlight */ = {
 			isa = PBXGroup;
 			children = (
-				D591F1A728DCAE0800A6D337 /* UpComingViewController.swift */,
+				D591F1A728DCAE0800A6D337 /* UpComingFlightViewController.swift */,
 			);
 			path = UpcomingFlight;
 			sourceTree = "<group>";
@@ -213,7 +213,7 @@
 				D598A81B28EB1525008B2DB3 /* PastCollectionViewCell.swift in Sources */,
 				D591F19128DC9D2500A6D337 /* SceneDelegate.swift in Sources */,
 				D591F1A628DCADF000A6D337 /* PastFlightViewController.swift in Sources */,
-				D591F1A828DCAE0800A6D337 /* UpComingViewController.swift in Sources */,
+				D591F1A828DCAE0800A6D337 /* UpComingFlightViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
