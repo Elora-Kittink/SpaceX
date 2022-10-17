@@ -43,7 +43,7 @@ struct FlightStruct: Decodable {
     enum CodingKeys: String, CodingKey {
         case flightNumber = "flight_number",
              dateUnix = "date_unix", links, success,
-             details, name, upcoming, cores, id
+             details, name, upcoming, cores, id, fairings
     }
     
     let flightNumber: Int
@@ -55,4 +55,5 @@ struct FlightStruct: Decodable {
     let upcoming: Bool
     let cores: [Core]
     let id: String
+    let fairings: Fairings?
 }

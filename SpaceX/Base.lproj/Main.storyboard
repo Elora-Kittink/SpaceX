@@ -40,14 +40,7 @@
                                         <rect key="frame" x="0.0" y="-143" width="414" height="814"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Prg-Rt-5rh" userLabel="NameLabel">
-                                                <rect key="frame" x="106" y="97" width="283" height="86"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8qK-wo-R0O" userLabel="DateLabel">
-                                                <rect key="frame" x="244" y="191" width="127" height="21"/>
+                                                <rect key="frame" x="32" y="126" width="283" height="86"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -133,6 +126,13 @@
                                                     </stackView>
                                                 </subviews>
                                             </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8qK-wo-R0O" userLabel="DateLabel">
+                                                <rect key="frame" x="254" y="291" width="127" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </view>
@@ -159,6 +159,19 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Dze-NM-PDM"/>
+                    <connections>
+                        <outlet property="dateLabel" destination="8qK-wo-R0O" id="WdL-5v-c6G"/>
+                        <outlet property="detailsLabel" destination="xta-JK-jx6" id="iwI-uf-FcM"/>
+                        <outlet property="flightNumberLabel" destination="tcH-Bl-E6O" id="VZl-uV-VCw"/>
+                        <outlet property="flightNumberResponseLabel" destination="HTo-uf-DMT" id="Nkh-yC-rTq"/>
+                        <outlet property="nameLabel" destination="Prg-Rt-5rh" id="hJh-62-UWb"/>
+                        <outlet property="recoveredLabel" destination="8B3-kq-yul" id="OV6-vb-37K"/>
+                        <outlet property="recoveredResponseLabel" destination="Wvg-ND-Ezk" id="RkX-uY-p4V"/>
+                        <outlet property="reusedLabel" destination="6CO-V9-nkQ" id="kGR-3U-ae2"/>
+                        <outlet property="reusedResponseLabel" destination="JhU-9Y-ACo" id="iT2-Qf-woj"/>
+                        <outlet property="succesLabel" destination="OOV-X2-4tT" id="V8u-0I-gMx"/>
+                        <outlet property="succesResponseLabel" destination="klY-tj-bml" id="ZTD-C7-WGo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V3C-d6-8Ec" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -229,6 +242,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="t51-8D-OFz"/>
+                    <connections>
+                        <outlet property="dateLabel" destination="PId-iC-Dou" id="WrX-UZ-KoV"/>
+                        <outlet property="detailsLabel" destination="1vl-da-sQ5" id="vf8-Ck-jkr"/>
+                        <outlet property="logoImageView" destination="D2T-1f-X77" id="HHD-nh-2Cu"/>
+                        <outlet property="nameLabel" destination="vX3-ym-o4T" id="Obe-Uy-OuY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MGY-jy-VXa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

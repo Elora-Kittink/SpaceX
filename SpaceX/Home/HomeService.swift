@@ -68,13 +68,12 @@ class HomeService {
             var upcoming: [FlightStruct] = []
             var past: [FlightStruct] = []
             
-
-
             flights.forEach { flight in
                 flight.upcoming ? upcoming.append(flight) : past.append(flight)
             }
-//            print(upcoming)
-//            print(past)
+            
+            print(upcoming)
+            print(past)
             self.delegate.didFinish(result: Flightcase(upcoming: upcoming, past: past))
         } catch {
             self.delegate.didFail(error: error)

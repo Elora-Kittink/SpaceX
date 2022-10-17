@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D55F4F2028F6FEF700B32171 /* HomeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55F4F1F28F6FEF700B32171 /* HomeHeader.swift */; };
 		D591F18F28DC9D2500A6D337 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D591F18E28DC9D2500A6D337 /* AppDelegate.swift */; };
 		D591F19128DC9D2500A6D337 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D591F19028DC9D2500A6D337 /* SceneDelegate.swift */; };
 		D591F19328DC9D2500A6D337 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D591F19228DC9D2500A6D337 /* ViewController.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D55F4F1F28F6FEF700B32171 /* HomeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeader.swift; sourceTree = "<group>"; };
 		D591F18B28DC9D2500A6D337 /* SpaceX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D591F18E28DC9D2500A6D337 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D591F19028DC9D2500A6D337 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				D599BCCF28E1F3D600EFED83 /* FlightStruct.swift */,
 				D598A81828EB0F27008B2DB3 /* UpcomingCollectionViewCell.swift */,
 				D598A81A28EB1525008B2DB3 /* PastCollectionViewCell.swift */,
+				D55F4F1F28F6FEF700B32171 /* HomeHeader.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 				D598A81B28EB1525008B2DB3 /* PastCollectionViewCell.swift in Sources */,
 				D591F19128DC9D2500A6D337 /* SceneDelegate.swift in Sources */,
 				D591F1A628DCADF000A6D337 /* PastFlightViewController.swift in Sources */,
+				D55F4F2028F6FEF700B32171 /* HomeHeader.swift in Sources */,
 				D591F1A828DCAE0800A6D337 /* UpComingFlightViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

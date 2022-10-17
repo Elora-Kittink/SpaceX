@@ -18,7 +18,7 @@ class HomeViewController: UIViewController {
     var upComingFlights: [FlightStruct] = []
     var pastFlights: [FlightStruct] = []
     var collectionView: UICollectionView!
-    
+    var selectedIndex: Int = 0
     
     
     override func viewDidLoad() {
@@ -33,6 +33,10 @@ class HomeViewController: UIViewController {
                                 forCellWithReuseIdentifier: UpcomingCollectionViewCell.identifier)
         collectionView.register(PastCollectionViewCell.self,
                                 forCellWithReuseIdentifier: PastCollectionViewCell.identifier)
+        collectionView.register(
+            HomeHeader.self,
+            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+            withReuseIdentifier: HomeHeader.identifier)
         collectionView.frame = view.bounds
         collectionView.backgroundColor = .brown
         collectionView.dataSource = self
@@ -40,13 +44,11 @@ class HomeViewController: UIViewController {
         Task {
            _ = await self.homeService.fetchFlights()
         }
-        
     }
 
     
     func generateLayout() -> UICollectionViewLayout {
-      let layout = UICollectionViewCompositionalLayout { (sectionIndex: Int,
-        layoutEnvironment: NSCollectionLayoutEnvironment)
+      let layout = UICollectionViewCompositionalLayout { (sectionIndex: Int, layoutEnvironment: NSCollectionLayoutEnvironment)
           -> NSCollectionLayoutSection? in
 
         let sectionLayoutKind = SectionType.allCases[sectionIndex]
@@ -76,9 +78,12 @@ class HomeViewController: UIViewController {
          
 //        Sections
         let catSection = NSCollectionLayoutSection(group: catGroup)
-         let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(44))
-         let headerElement = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: "Potichat", alignment: .top)
-         catSection.boundarySupplementaryItems = [headerElement]
+//         let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(44))
+//         let headerElement = NSCollectionLayoutBoundarySupplementaryItem(
+//            layoutSize: headerSize,
+//            elementKind: HomeHeader.identifier,
+//            alignment: .top)
+//         catSection.boundarySupplementaryItems = [headerElement]
          catSection.orthogonalScrollingBehavior = .continuous
          
 //        return
@@ -89,7 +94,7 @@ class HomeViewController: UIViewController {
 //        Items
 
         let dogItem = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1/2),
+            widthDimension: .fractionalWidth(1 / 2),
             heightDimension: .estimated(158)))
         
 //        Groups
@@ -104,14 +109,17 @@ class HomeViewController: UIViewController {
 //        Sections
         
         let dogSection = NSCollectionLayoutSection(group: dogGroupe)
-         let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(44))
-         let headerElement = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: "Potichien", alignment: .top)
-         dogSection.boundarySupplementaryItems = [headerElement]
+//         let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(44))
+//         let headerElement = NSCollectionLayoutBoundarySupplementaryItem(
+//            layoutSize: headerSize,
+//            elementKind: "Potichien",
+//            alignment: .top)
+//         dogSection.boundarySupplementaryItems = [headerElement]
 //        return
         return dogSection
     }
     
-    var selectedIndex: Int = 0
+
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "upcomingSegue" {
@@ -123,7 +131,6 @@ class HomeViewController: UIViewController {
             }
         }
     }
-    
 }
 
 extension HomeViewController: HomeServiceDelegate {
@@ -137,7 +144,8 @@ extension HomeViewController: HomeServiceDelegate {
     }
 }
 
-extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+
+extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         SectionType.allCases.count
@@ -148,14 +156,26 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
 //        if section == 0 { return upComingFlights.count } else { return pastFlights.count }
     }
     
-//    MARK: - View Supplementary Element of Kind
+// MARK: View Supplementary Element of Kind
     
-//    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-//        quelque chose comme ça pour les headers?
-//    }
+    func collectionView(_ collectionView: UICollectionView,
+                        viewForSupplementaryElementOfKind kind: String,
+                        at indexPath: IndexPath) -> UICollectionReusableView {
+        
+            return collectionView.dequeueReusableSupplementaryView(
+                ofKind: kind,
+                withReuseIdentifier: HomeHeader.identifier,
+                for: indexPath) 
+    }
     
-//    MARK: - Cell For Item At
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: view.frame.size.width, height: view.frame.size.width / 2)
+    }
     
+// MARK: - Cell For Item At
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         print("index \(indexPath.section)")
         if indexPath.section == 0 {
@@ -164,28 +184,33 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             
             return cell
         } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UpcomingCollectionViewCell.identifier, for: indexPath)
+            let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: UpcomingCollectionViewCell.identifier,
+                for: indexPath)
             //            je passe les data ici? genre cell.data = upcomingFlights[indexPath.row]
             return cell
         }
     }
     
     
-//     MARK: - Did Select Item At - ce qui se passe au clique sur une cell
+// MARK: - Did Select Item At - ce qui se passe au clique sur une cell
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            guard let controller = storyboard.instantiateViewController(withIdentifier: "UpComingFlightViewController") as? UpComingFlightViewController
+            guard let controller = storyboard.instantiateViewController(
+                withIdentifier: "UpComingFlightViewController") as? UpComingFlightViewController
             else {
                 return
             }
+            print(indexPath.row)
             controller.flight = upComingFlights[indexPath.row]
             self.navigationController?.pushViewController(controller, animated: true)
         } else {
 //            self.selectedIndex = indexPath.row
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            guard let controller = storyboard.instantiateViewController(withIdentifier: "PastFlightViewController") as? PastFlightViewController
+            guard let controller = storyboard.instantiateViewController(
+                withIdentifier: "PastFlightViewController") as? PastFlightViewController
             else {
                 return
             }
