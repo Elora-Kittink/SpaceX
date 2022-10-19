@@ -9,22 +9,12 @@ import UIKit
 
 class HomeHeader: UICollectionReusableView {
     
+    @IBOutlet private weak var headerLabel: UILabel!
+    
     static let identifier = "HomeHeader"
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    
-    @available(*, unavailable)
-    required init?(coder: NSCoder) {
-        fatalError("erreur fatale")
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-    }
-    
-    func configure() {
+    func configure(title: String) {
         backgroundColor = .blue
+        headerLabel.text = title
     }
 }

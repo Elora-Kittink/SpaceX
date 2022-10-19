@@ -9,16 +9,13 @@ import UIKit
 
 class UpComingFlightViewController: UIViewController {
 
-
+    
+    @IBOutlet private weak var detailsLabel: UILabel!
+    @IBOutlet private weak var dateLabel: UILabel!
+    @IBOutlet private weak var nameLabel: UILabel!
+    @IBOutlet private weak var logoImageView: UIImageView!
     
     var flight: FlightStruct!
-    
-    @IBOutlet weak var detailsLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var logoImageView: UIImageView!
-    
-    
     var testtitle: String?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +27,7 @@ class UpComingFlightViewController: UIViewController {
 }
 
 extension UIImageView {
-     
+    
     func loadImage(url: String) {
         DispatchQueue.global(qos: .background).async {
             DispatchQueue.main.async {

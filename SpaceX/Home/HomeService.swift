@@ -36,20 +36,20 @@ struct Flightcase {
 
 class HomeService {
     
-   weak var delegate: HomeServiceDelegate!
-
+    weak var delegate: HomeServiceDelegate!
+    
     init(delegate: HomeServiceDelegate) {
         self.delegate = delegate
     }
     
-
+    
     func fetchFlights() async {
         var flights: [FlightStruct] = []
         guard let url = URL(string: "https://api.spacexdata.com/v5/launches") else {
             self.delegate.didFail(error: GlobalError.urlApiNotCreated)
             return }
         do {
-             flights = try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<[FlightStruct], Error>) in
+            flights = try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<[FlightStruct], Error>) in
                 let task = URLSession.shared.dataTask(with: url) { data, response, error in
                     guard let data = data, let response = response else {
                         let error = error ?? URLError(.badServerResponse)

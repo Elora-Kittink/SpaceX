@@ -35,4 +35,7 @@ class PastFlightViewController: UIViewController {
         self.flightNumberResponseLabel.text = "\(flight.flightNumber )"
        
     }
+    
 }
+
+
