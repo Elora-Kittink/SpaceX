@@ -47,7 +47,7 @@ struct FlightStruct: Decodable {
     }
     
     let flightNumber: Int
-    let dateUnix: Int
+    let dateUnix: Double
     let links: Links
     let success: Bool?
     let details: String?

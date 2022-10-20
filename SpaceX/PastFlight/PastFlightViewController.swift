@@ -26,16 +26,13 @@ class PastFlightViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.isHidden = false
         self.dateLabel.text = "\(flight.dateUnix)"
         self.nameLabel.text = flight.name
         self.detailsLabel.text = flight.details
-        self.succesResponseLabel.text = "\(flight.success)"
-        self.recoveredResponseLabel.text = "\(flight.fairings?.recovered)"
-        self.reusedResponseLabel.text = "\(flight.cores[0].reused)"
+        self.succesResponseLabel.text = "\(String(describing: flight.success))"
+        self.recoveredResponseLabel.text = "\(String(describing: flight.fairings?.recovered))"
+        self.reusedResponseLabel.text = "\(String(describing: flight.cores[0].reused))"
         self.flightNumberResponseLabel.text = "\(flight.flightNumber )"
-       
     }
-    
 }
-
-

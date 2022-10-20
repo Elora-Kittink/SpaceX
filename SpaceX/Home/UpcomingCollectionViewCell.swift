@@ -13,13 +13,17 @@ class UpcomingCollectionViewCell: UICollectionViewCell {
 
     
     @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet private weak var upcomingCellDateLabel: UILabel!
+    @IBOutlet private weak var upcomingCellNameLabel: UILabel!
     
     static let identifier = "UpcomingCollectionViewCell"
     
     var data: FlightStruct! {
         didSet {
+            upcomingCellNameLabel.text = data.name
+            upcomingCellDateLabel.text = data.dateUnix.convertDate()
             guard let imageUrl = data.links.flickr.original.first else {
-                self.imageView.image = UIImage(named: "upcomingFlight")
+                self.imageView.image = #imageLiteral(resourceName: "pasFlight")
                 return
             }
             imageView.loadImage(url: imageUrl)
@@ -40,3 +44,5 @@ class UpcomingCollectionViewCell: UICollectionViewCell {
         imageView.frame = contentView.bounds
     }
 }
+
+

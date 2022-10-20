@@ -25,6 +25,7 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.isHidden = true
         self.homeService = HomeService(delegate: self)
         
         collectionView.register(UINib(nibName: "PastCollectionViewCell",
@@ -116,8 +117,10 @@ class HomeViewController: UIViewController {
     }
     
     func supplementaryHeaderItem() -> NSCollectionLayoutBoundarySupplementaryItem {
-        .init(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(50)), elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
-        
+        .init(layoutSize: .init(widthDimension: .fractionalWidth(1),
+                                heightDimension: .estimated(50)),
+              elementKind: UICollectionView.elementKindSectionHeader,
+              alignment: .top)
     }
 
     
@@ -172,9 +175,9 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             for: indexPath) as? HomeHeader
         
         if indexPath.section == 1 {
-            header?.configure(title: "PAST")
+            header?.configure(title: "Old Flight")
         } else {
-            header?.configure(title: "UPCOMING")
+            header?.configure(title: "Upcoming Flight")
         }
         
        
@@ -192,7 +195,9 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         print("index \(indexPath.section)")
         if indexPath.section == 1 {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PastCollectionViewCell.identifier, for: indexPath) as? PastCollectionViewCell else {
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: PastCollectionViewCell.identifier,
+                for: indexPath) as? PastCollectionViewCell else {
                 return UICollectionViewCell()
             }
             cell.data = pastFlights[indexPath.row]

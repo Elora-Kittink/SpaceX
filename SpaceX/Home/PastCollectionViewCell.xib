@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,25 +20,43 @@
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="91M-t5-8Zo">
                         <rect key="frame" x="0.0" y="0.0" width="316" height="242"/>
                     </imageView>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="w0A-mr-eN2">
+                        <rect key="frame" x="0.0" y="50" width="316" height="142"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uQq-lx-8uI" userLabel="pastCellNameLabel">
+                                <rect key="frame" x="137.33333333333334" y="0.0" width="41.333333333333343" height="63"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xtH-XJ-zSU" userLabel="pastCellDateLabel">
+                                <rect key="frame" x="137.33333333333334" y="79" width="41.333333333333343" height="63"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
                 </subviews>
-                <color key="backgroundColor" systemColor="systemPinkColor"/>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
+                    <constraint firstAttribute="bottom" secondItem="w0A-mr-eN2" secondAttribute="bottom" constant="50" id="0gg-g2-FG4"/>
+                    <constraint firstItem="w0A-mr-eN2" firstAttribute="leading" secondItem="Pxj-C0-xQ6" secondAttribute="leading" id="CX6-1d-hjL"/>
                     <constraint firstItem="91M-t5-8Zo" firstAttribute="leading" secondItem="Pxj-C0-xQ6" secondAttribute="leading" id="RXl-VZ-Mbu"/>
                     <constraint firstItem="91M-t5-8Zo" firstAttribute="top" secondItem="Pxj-C0-xQ6" secondAttribute="top" id="SWa-ew-4ai"/>
                     <constraint firstAttribute="bottom" secondItem="91M-t5-8Zo" secondAttribute="bottom" id="gC0-xY-t3I"/>
+                    <constraint firstAttribute="trailing" secondItem="w0A-mr-eN2" secondAttribute="trailing" id="gSt-81-pyX"/>
+                    <constraint firstItem="w0A-mr-eN2" firstAttribute="top" secondItem="Pxj-C0-xQ6" secondAttribute="top" constant="50" id="seH-WF-ixw"/>
                     <constraint firstAttribute="trailing" secondItem="91M-t5-8Zo" secondAttribute="trailing" id="sgL-QR-467"/>
                 </constraints>
             </collectionViewCellContentView>
             <size key="customSize" width="316" height="242"/>
             <connections>
                 <outlet property="imageView" destination="91M-t5-8Zo" id="w2V-K0-1Ke"/>
+                <outlet property="pastCellDateLabel" destination="xtH-XJ-zSU" id="6BO-Tn-LyU"/>
+                <outlet property="pastCellNameLabel" destination="uQq-lx-8uI" id="2HK-RW-ez8"/>
             </connections>
             <point key="canvasLocation" x="298.46153846153845" y="76.777251184834114"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <systemColor name="systemPinkColor">
-            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-    </resources>
 </document>

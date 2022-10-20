@@ -19,6 +19,7 @@ class UpComingFlightViewController: UIViewController {
     var testtitle: String?
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.isHidden = false
         self.detailsLabel.text = flight.details
         self.dateLabel.text = "\(flight.dateUnix)"
         self.nameLabel.text = flight.name
