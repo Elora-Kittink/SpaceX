@@ -14,6 +14,9 @@ struct FlightStruct: Decodable {
     struct Links: Decodable {
         let patch: Patch
         let flickr: Flickr
+        let webcast: String?
+        let article: String?
+        let wikipedia: String?
     }
 
     // MARK: - Flickr
